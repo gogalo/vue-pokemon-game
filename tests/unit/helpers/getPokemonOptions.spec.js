@@ -3,6 +3,7 @@ import getPokemonOptions, {
     getPokemonIdsList,
     getPokemonNames
 } from "@/helpers/getPokemonOptions";
+import {getPokemons} from "../mocks/pokemons.mocks";
 
 describe('getPokemonOptionsHelpersShould', () => {
 
@@ -42,12 +43,7 @@ describe('getPokemonOptionsHelpersShould', () => {
 
     test('return an array of pokemons names and ids objects when calling getPokemonNames', async () => {
 
-        const pokemonsObjects = [
-            { name: 'bulbasaur', id: 1 },
-            { name: 'ivysaur', id: 2 },
-            { name: 'venusaur', id: 3 },
-            { name: 'charmander', id: 4 }
-        ]
+        const pokemonsObjects = getPokemons()
 
         expect(pokemonNames).toStrictEqual(pokemonsObjects)
     })
