@@ -14,24 +14,35 @@ describe('PokemonPictureShould', () => {
         expect ( wrapper.html() ).toMatchSnapshot()
     })
 
-    test('show the hidden image and the pokemon with id 100', () => {
+    test('show the hidden image', () => {
         const wrapper = shallowMount( PokemonPicture,{
             props: {
-                pokemonId: 100,
+                pokemonId: 1,
                 pokemonShow: false
             }
         })
 
-        const [image1, image2] = wrapper.findAll('img')
+        const image = wrapper.find('img')
 
-        expect(image1.exists()).toBeTruthy()
-        expect(image1.classes('hidden-pokemon')).toBeTruthy()
-        expect(image1.attributes('src')).toBe('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/100.svg')
-
-        expect(image2).toBe(undefined)
+        expect(image.exists()).toBeTruthy()
+        expect(image.classes('hidden-pokemon')).toBeTruthy()
     })
 
     test('show the pokemon', () => {
+        const wrapper = shallowMount( PokemonPicture,{
+            props: {
+                pokemonId: 1,
+                pokemonShow: true
+            }
+        })
+
+        const image = wrapper.find('img')
+
+        expect(image.exists()).toBeTruthy()
+        expect(image.classes('fade-in')).toBeTruthy()
+    })
+
+    test ('show the pokemon with id 100', () => {
         const wrapper = shallowMount( PokemonPicture,{
             props: {
                 pokemonId: 100,
@@ -39,14 +50,9 @@ describe('PokemonPictureShould', () => {
             }
         })
 
-        const [image1, image2] = wrapper.findAll('img')
+        const image = wrapper.find('img')
 
-        expect(image1.exists()).toBeTruthy()
-        expect(image1.classes('hidden-pokemon')).toBeTruthy()
-
-        expect(image2.exists()).toBeTruthy()
-        expect(image2.classes('hidden-pokemon')).toBeFalsy()
-        expect(image2.classes('fade-in')).toBeTruthy()
+        expect(image.attributes('src')).toBe('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/100.svg')
     })
 
 })
