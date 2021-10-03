@@ -1,39 +1,39 @@
 import getPokemonOptions, {
-    POKEMONS_IDS_LENGTH,
-    getPokemons,
+    NUMBER_OF_POKEMONS,
+    getPokemonIdsList,
     getPokemonNames
 } from "@/helpers/getPokemonOptions";
 
 describe('getPokemonOptionsHelpersShould', () => {
 
-    let pokemonsIds;
+    let pokemonIds;
     let pokemonNames;
 
     beforeEach(async () => {
-        pokemonsIds = getPokemons()
+        pokemonIds = getPokemonIdsList()
         pokemonNames = await getPokemonNames([1,2,3,4])
     });
 
     afterEach(() => {
-        pokemonsIds = null;
+        pokemonIds = null;
         pokemonNames = null;
     });
 
     test('return an array when calling getPokemons', () => {
-        expect(Array.isArray(pokemonsIds)).toBeTruthy()
+        expect(Array.isArray(pokemonIds)).toBeTruthy()
     })
 
     test('return an array with 650 elements when calling getPokemons', () => {
-        expect(pokemonsIds.length).toBe(POKEMONS_IDS_LENGTH)
+        expect(pokemonIds.length).toBe(NUMBER_OF_POKEMONS)
     })
 
     test('return an array and the first an the last elements are 1 and 650 when calling getPokemons', () => {
-        expect(pokemonsIds[0]).toBe(1)
-        expect(pokemonsIds[649]).toBe(650)
+        expect(pokemonIds[0]).toBe(1)
+        expect(pokemonIds[649]).toBe(650)
     })
 
     test('return an array of numbers when calling getPokemons', () => {
-        expect(pokemonsIds.every((element) => typeof element === 'number')).toBeTruthy()
+        expect(pokemonIds.every((element) => typeof element === 'number')).toBeTruthy()
     })
 
     test('return an array when calling getPokemonNames', async () => {
