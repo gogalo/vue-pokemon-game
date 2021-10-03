@@ -19,20 +19,20 @@ describe('getPokemonOptionsHelpersShould', () => {
         pokemonNames = null;
     });
 
-    test('return an array when calling getPokemons', () => {
+    test('return an array when calling getPokemonIdsList', () => {
         expect(Array.isArray(pokemonIds)).toBeTruthy()
     })
 
-    test('return an array with 650 elements when calling getPokemons', () => {
+    test('return an array with 650 elements when calling getPokemonIdsList', () => {
         expect(pokemonIds.length).toBe(NUMBER_OF_POKEMONS)
     })
 
-    test('return an array and the first an the last elements are 1 and 650 when calling getPokemons', () => {
+    test('return an array and the first an the last elements are 1 and 650 when calling getPokemonIdsList', () => {
         expect(pokemonIds[0]).toBe(1)
         expect(pokemonIds[649]).toBe(650)
     })
 
-    test('return an array of numbers when calling getPokemons', () => {
+    test('return an array of numbers when calling getPokemonIdsList', () => {
         expect(pokemonIds.every((element) => typeof element === 'number')).toBeTruthy()
     })
 
